@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="fr">
+
+    <head>
+        <meta charset="UTF-8">
+        <title>TTennis Gadgets</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <link href="style.css" rel="stylesheet">
+    </head>
+
+    <body onload="bilanDerive(); listboxRecupererJoueur(); afficherDesafficherStatistiques(); charger()">
+
+
+
+
+        <!--Calculateur de points-->
+        <section id="vueCalculPoints" class="vueActive">
+            <header>
+                <h1>Calculateur de points</h1>
+            </header>
+
+            <main>
+                <div class="cssCentre">
+                    <label for="points">Nombre de points :</label>
+
+                    <input type="number" id="points" name="points" min="500" value="500">
+                    <br><br>
+                </div>
+
+                <!--Tableau-->
+                <table id="tableauPoints">
+                    <thead id="thead">
+                        <tr>
+                            <th scope="col" style="width : 20%">Classement adversaire</th>
+                            <th scope="col" style="width : 10%">Victoire ?</th>
+                            <th scope="col" style="width : 10%">Gain</th>
+                            <th scope="col" style="width : 20%">Supprimer</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="corpsTableau">
+
+                    </tbody>
+                </table>
+
+                <br><br>
+                <button id="ajouterLigne" onclick="ajouterLigne()" class="cssCentre">+ Ajouter un match</button>
+            </main>
+            <footer>
+                <!--
+                Phrase bilan
+                Apres la derive vous ... points, vous aurez ... points, vous serez ... !
+                -->
+                <p id="bilanDerive"></p>
+            </footer>
+
+
+        </section>
+
+
+
+
+
+        <!--Statistiques-->
+        <section id="vueStatistiques" class="vue">
+
+            <h1>Statistiques</h1>
+            <!--Menu déroulant pour choisir le joueur-->
+            <label for="listboxJoueur">Partenaire d'entraînement : </label>
+
+            <select id="listboxJoueur">
+            </select>
+
+            <br><br>
+            <label for="listboxModifier">Qui voulez-vous ajouter / Supprimer ?</label>
+            <input class="entreeJoueur" type="text" id="listboxModifier" placeholder="Saisir le nom" value="">
+
+            <br><br>
+            <button onclick="listboxJoueurAjouter()" id="ajouterPartenaire">Ajouter un partenaire</button>
+            <button onclick="listboxJoueurSupprimer()" id="supprimerPartenaire">Supprimer un partenaire</button>
+
+            <!--Tableau récapitulatif des matchs-->
+            <br><br>
+            <h2 id="titreTableau">Tableau récapitulatif des matchs avec <span id="listboxChoix"></span></h2>
+
+            <table id="tableauMatch">
+                <thead id="teteMatch">
+                    <tr>
+                        <th scope="col">Nombre de set</th>
+                        <th scope="col">Set gagné</th>
+                        <th scope="col">Set perdu</th>
+                        <th scope="col">Vainqueur</th>
+                        <th scope="col">Supprimer</th>
+                    </tr>
+                </thead>
+
+                <tbody id="corpsMatch">
+
+                </tbody>
+            </table>
+
+            <br><br>
+            <button id="ajouterMatch" title="Ne fonctionne pas si aucun joueur choisit" onclick="ajouterMatch()">Ajouter un match</button>
+
+            <!--Statistiques sur les match avec cette personne-->
+            <div class="bloc-statistiques-layout">
+                <div class="partie-stats">
+                    <h2 id="titreStatistiques">Statistiques sur les match</h2>
+                    <ul id="puceStatistiques">
+                        <li>Nombre moyen de set gagné :<span id="moyenneSetGagne"></span></li>
+                        <li>Nombre moyen de set perdu :<span id="moyenneSetPerdu"></span></li>
+                        <li>Fréquence de victoire :<span id="frequenceVictoire"></span></li>
+                        <li>Fréquence de défaite :<span id="frequenceDefaite"></span></li>
+                    </ul>
+                </div>
+
+                <!--Graphique-->
+                <div class="conteneur-graphique">
+                    <canvas id="graphique" width="50"></canvas>
+                </div>
+            </div>
+        </section>
+
+
+        <section id="vueAccueil" class="vue">
+            <h1>Accueil</h1>
+
+        </section>
+
+
+
+
+
+        <!--Navigation-->
+        <section id="navigation" class="navigation">
+
+            <!--
+            Boutons de navigations
+            Calculateur de points
+            Statistiques
+            Accueil
+            Calendrier
+            Paramètres
+            -->
+            <br><br>
+            <div class="cssCentre">
+                <button data-cible="vueCalculPoints" class="navigation" id="calculateurPoints">Calculateur de points</button>
+                <button data-cible="vueStatistiques" class="navigation" id="statistiques">Statistiques</button>
+                <!--
+                <button data-cible="vueAccueil" class="navigation" id="accueil">Accueil</button>
+                <button data-cible="vueCalendrier" class="navigation" id="calendrier">Calendrier</button>
+                <button data-cible="vueParametres" class="navigation" id="parametres">Paramètres</button>
+                -->
+            </div>
+        </section>
+
+        <script src="script.js"></script>
+    </body>
+</html>
