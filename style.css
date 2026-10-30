@@ -441,10 +441,10 @@ tbody th {
 }
 
 /* Tableau 1 : calculateur de points */
-#tableauPoints th:nth-child(1) { width: 32% !important; }
-#tableauPoints th:nth-child(2) { width: 18% !important; }
-#tableauPoints th:nth-child(3) { width: 18% !important; }
-#tableauPoints th:nth-child(4) { width: 32% !important; }
+#tableauPoints th:nth-child(1) { width: 34% !important; }
+#tableauPoints th:nth-child(2) { width: 16% !important; }
+#tableauPoints th:nth-child(3) { width: 16% !important; }
+#tableauPoints th:nth-child(4) { width: 34% !important; }
 
 /* Tableau 2 : matchs (5 colonnes) */
 #tableauMatch th:nth-child(1),
@@ -461,4 +461,17 @@ tbody input[type="checkbox"].victoire {
 /* Sécurité : si malgré tout un tableau est trop large, il défile au lieu de déborder */
 .vueActive {
     overflow-x: hidden;
+}
+
+/* --- XIII. En-têtes verticaux --- */
+thead th {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);   /* lecture de bas en haut */
+    white-space: nowrap;
+    text-align: left;            /* après rotation, aligne le texte en bas de la cellule */
+    vertical-align: middle;
+    padding: 10px 4px;
+    letter-spacing: 0.5px;
+    font-size: 0.65rem;
+    line-height: 1.2;
 }
