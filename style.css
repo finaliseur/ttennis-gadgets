@@ -8,38 +8,46 @@
     --color-yellow-hover: #e6b800;
     --color-danger: #ff4d4d;
     --radius: 12px;
-    --shadow: 0 4px 16px rgba(255, 204, 0, 0.1);
+    --shadow: 0 4px 16px rgba(255, 204, 0, 0.15);
 }
 
-/* --- II. Mise en page générale --- */
+/* --- II. Mise en page générale & Pleine hauteur mobile --- */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     background-color: var(--bg-app);
     color: var(--text-main);
     margin: 0;
-    padding: 16px;
-    padding-bottom: 90px; /* Espace réservé pour la barre de navigation fixe */
+    padding: 12px;
+    padding-bottom: 95px; /* Espace réservé pour la barre de navigation fixe */
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
 }
 
-/* --- III. Gestion des vues (onglets) --- */
+/* --- III. Gestion des vues (onglets dynamiques) --- */
 .vue {
     display: none;
 }
 
 .vueActive {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
     background: var(--card-bg);
     border: 2px solid var(--color-yellow);
-    padding: 20px 16px;
+    padding: 16px 12px;
     border-radius: var(--radius);
     box-shadow: var(--shadow);
-    max-width: 950px;
-    margin: 0 auto;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
     animation: fadeIn 0.25s ease-in-out;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(6px); }
+    from { opacity: 0; transform: translateY(4px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
@@ -47,8 +55,9 @@ body {
 h1 {
     color: var(--color-yellow);
     text-align: center;
-    font-size: 1.6rem;
-    margin-bottom: 24px;
+    font-size: 1.4rem;
+    margin-top: 4px;
+    margin-bottom: 20px;
     position: relative;
     text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
@@ -56,30 +65,32 @@ h1 {
 h1::after {
     content: '';
     display: block;
-    width: 50px;
-    height: 4px;
+    width: 40px;
+    height: 3px;
     background-color: var(--color-yellow);
-    margin: 8px auto 0 auto;
+    margin: 6px auto 0 auto;
     border-radius: 2px;
-    box-shadow: 0 0 8px var(--color-yellow);
+    box-shadow: 0 0 6px var(--color-yellow);
 }
 
 h2 {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     color: var(--color-yellow);
-    margin-top: 20px;
+    margin-top: 16px;
+    margin-bottom: 12px;
 }
 
-/* --- V. Formulaires et Champs de saisie (Bordures blanches permanentes) --- */
+/* --- V. Formulaires et Champs de saisie --- */
 input[type="number"], input[type="text"], select {
-    padding: 10px 12px;
-    border: 2px solid #ffffff; /* Bordure blanche visible en permanence */
+    padding: 10px 10px;
+    border: 2px solid #ffffff;
     border-radius: 8px;
-    font-size: 1rem;
+    font-size: 0.95rem;
     background-color: #000000;
     color: var(--color-yellow);
     font-weight: bold;
     transition: all 0.2s ease;
+    box-sizing: border-box;
 }
 
 /* Suppression des flèches sur les inputs number */
@@ -94,31 +105,31 @@ input[type="number"] {
 
 input[type="number"]:focus, input[type="text"]:focus, select:focus {
     outline: none;
-    border-color: var(--color-yellow); /* S'illumine en jaune au focus */
+    border-color: var(--color-yellow);
     box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.4);
 }
 
 input {
-    width: 60px;
+    width: 55px;
     text-align: center;
 }
 
 .entreeJoueur {
     width: 100%;
-    max-width: 220px;
+    max-width: 100%;
 }
 
 .cssCentre {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 12px;
+    gap: 10px;
     flex-wrap: wrap;
-    margin: 15px 0;
+    margin: 12px 0;
     color: var(--text-main);
 }
 
-/* --- VI. Personnalisation des Cases à Cocher (100% CSS) --- */
+/* --- VI. Personnalisation des Cases à Cocher --- */
 input[type="checkbox"].victoire {
     appearance: none;
     -webkit-appearance: none;
@@ -154,45 +165,50 @@ input[type="checkbox"].victoire:checked::after {
     font-weight: 900;
 }
 
-/* --- VII. Boutons ergonomiques --- */
+/* --- VII. Boutons standards & Gestion propre des images --- */
 button {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
+    gap: 6px;
     background-color: var(--color-yellow);
     color: var(--color-black);
     border: 2px solid var(--color-yellow);
-    padding: 10px 16px;
+    padding: 10px 14px;
     border-radius: 8px;
     font-weight: bold;
     cursor: pointer;
-    font-size: 0.95rem;
-    transition: background-color 0.2s, transform 0.1s, box-shadow 0.2s;
+    font-size: 0.9rem;
+    transition: background-color 0.2s, transform 0.1s;
     box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    box-sizing: border-box;
 }
 
+/* Sécurisation stricte des images dans les boutons */
 button img {
+    width: 18px;
+    height: 18px;
+    max-width: 18px;
     max-height: 18px;
-    width: auto;
     object-fit: contain;
+    flex-shrink: 0;
+    display: inline-block;
 }
 
 button:hover {
     background-color: var(--color-yellow-hover);
-    box-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
 }
 
 button:active {
     transform: translateY(1px);
 }
 
-/* Boutons d'action principale centrés */
+/* Boutons d'action principale */
 #ajouterLigne, #ajouterMatch, #ajouterPartenaire {
     background-color: var(--color-yellow);
     color: var(--color-black);
     display: block;
-    margin: 15px auto;
+    margin: 14px auto;
     width: 100%;
     max-width: 260px;
     padding: 12px;
@@ -203,7 +219,7 @@ button:active {
     color: var(--color-danger);
     border: 2px solid var(--color-danger);
     display: block;
-    margin: 15px auto;
+    margin: 14px auto;
     width: 100%;
     max-width: 260px;
     padding: 12px;
@@ -219,7 +235,7 @@ button:active {
     color: var(--color-danger);
     border: 1px solid var(--color-danger);
     padding: 6px 10px;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
 }
 
 .suppresion:hover {
@@ -237,25 +253,27 @@ table {
     border: 2px solid var(--color-yellow);
     border-radius: 8px;
     overflow: hidden;
-    margin: 16px 0;
+    margin: 12px 0;
 }
 
 #tableauMatch th, #tableauMatch td {
     width: 20%;
     border: 2px solid var(--color-yellow);
-    padding: 12px 4px;
+    padding: 10px 2px;
     text-align: center;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     box-sizing: border-box;
+    word-break: break-word;
 }
 
 #tableauPoints th, #tableauPoints td {
     width: 25%;
     border: 2px solid var(--color-yellow);
-    padding: 12px 6px;
+    padding: 10px 4px;
     text-align: center;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     box-sizing: border-box;
+    word-break: break-word;
 }
 
 th {
@@ -263,7 +281,7 @@ th {
     color: var(--color-yellow);
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     letter-spacing: 0.5px;
     border: 2px solid var(--color-yellow);
 }
@@ -281,28 +299,30 @@ tr:hover td {
 /* --- IX. Section Statistiques & Graphique --- */
 .bloc-statistiques-layout {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-around;
-    gap: 20px;
+    gap: 16px;
     background: #141414;
     border: 1px solid var(--color-yellow);
-    padding: 16px;
+    padding: 14px;
     border-radius: var(--radius);
-    margin-top: 20px;
+    margin-top: 16px;
 }
 
 .partie-stats ul {
     list-style: none;
     padding: 0;
     margin: 0;
+    width: 100%;
 }
 
 .partie-stats li {
-    padding: 8px 0;
+    padding: 6px 0;
     border-bottom: 1px dashed #333333;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--text-main);
+    display: flex;
+    justify-content: space-between;
 }
 
 .partie-stats li span {
@@ -312,24 +332,25 @@ tr:hover td {
 
 .conteneur-graphique {
     width: 100%;
-    max-width: 200px;
+    max-width: 180px;
+    margin: 0 auto;
 }
 
-/* --- X. Phrase Bilan (Footer du calculateur) --- */
+/* --- X. Phrase Bilan (Footer) --- */
 footer p {
     text-align: center;
     font-style: italic;
     color: var(--color-black);
     background: var(--color-yellow);
     border-left: 4px solid #ffffff;
-    padding: 12px;
+    padding: 10px;
     border-radius: 6px;
-    margin-top: 20px;
-    font-size: 0.95rem;
+    margin-top: 16px;
+    font-size: 0.9rem;
     font-weight: bold;
 }
 
-/* --- XI. Barre de Navigation Fixe (Ergonomie mobile / Application iOS) --- */
+/* --- XI. Barre de Navigation Inférieure (Pleine Largeur & Adaptative) --- */
 section.navigation {
     position: fixed;
     bottom: 0;
@@ -337,56 +358,73 @@ section.navigation {
     width: 100%;
     background-color: #000000;
     border-top: 2px solid var(--color-yellow);
-    padding: 10px 0;
-    box-shadow: 0 -4px 16px rgba(255, 204, 0, 0.2);
+    padding: 8px 6px;
+    box-shadow: 0 -4px 16px rgba(255, 204, 0, 0.25);
     z-index: 1000;
+    box-sizing: border-box;
 }
 
 section.navigation .cssCentre {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap; 
-    gap: 12px;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    gap: 6px;
     margin: 0;
-    padding: 0 10px;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 section.navigation button.navigation {
+    flex: 1; /* Force chaque bouton à occuper une part égale de la largeur totale */
+    display: flex;
+    flex-direction: column; /* Empile l'icône et le texte proprement */
+    align-items: center;
+    justify-content: center;
     background-color: var(--color-yellow);
     color: var(--color-black);
     border: 2px solid var(--color-yellow);
-    padding: 8px 18px;
-    border-radius: 20px;
-    font-size: 0.85rem;
-    box-shadow: none;
-    position: static;
+    padding: 6px 2px;
+    border-radius: 8px;
+    font-size: 0.75rem;
     font-weight: bold;
+    text-align: center;
+    box-shadow: none;
+    cursor: pointer;
+    min-height: 48px; /* Confort tactile sur smartphone */
+    box-sizing: border-box;
+    transition: background-color 0.2s, transform 0.1s;
+}
+
+/* Rendu net et proportionné des icônes dans la barre de navigation */
+section.navigation button.navigation img {
+    width: 20px;
+    height: 20px;
+    max-width: 20px;
+    max-height: 20px;
+    object-fit: contain;
+    margin-bottom: 2px;
+    display: block;
 }
 
 section.navigation button.navigation:hover {
     background-color: var(--color-yellow-hover);
-    box-shadow: 0 0 8px rgba(255, 204, 0, 0.6);
 }
 
-/* --- XII. Adaptation pour les petits écrans (Smartphones / iPhone) --- */
-@media (max-width: 600px) {
+/* --- XII. Ajustements Media Queries pour tablettes / grands écrans --- */
+@media (min-width: 768px) {
     body {
-        padding: 10px;
-        padding-bottom: 85px;
+        padding: 24px;
+        padding-bottom: 90px;
     }
-
-    .vueActive {
-        padding: 12px 8px;
-    }
-
+    
     .bloc-statistiques-layout {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
+        flex-direction: row;
+        justify-content: space-around;
     }
 
-    input[type="number"] {
-        width: 50px;
+    section.navigation .cssCentre {
+        max-width: 600px;
+        margin: 0 auto;
     }
 }
