@@ -18,7 +18,7 @@ body {
     color: var(--text-main);
     margin: 0;
     padding: 12px;
-    padding-bottom: 95px; /* Espace réservé pour la barre de navigation fixe */
+    padding-bottom: 95px;
     min-height: 100vh;
     min-height: 100dvh;
     display: flex;
@@ -80,12 +80,12 @@ h2 {
     margin-bottom: 12px;
 }
 
-/* --- V. Formulaires et Champs de saisie --- */
+/* --- V. Formulaires et Champs de saisie (Anti-zoom iOS 16px) --- */
 input[type="number"], input[type="text"], select {
-    padding: 10px 10px;
+    padding: 8px 8px;
     border: 2px solid #ffffff;
     border-radius: 8px;
-    font-size: 0.95rem;
+    font-size: 16px !important; /* Empêche le zoom automatique sur iPhone */
     background-color: #000000;
     color: var(--color-yellow);
     font-weight: bold;
@@ -93,7 +93,6 @@ input[type="number"], input[type="text"], select {
     box-sizing: border-box;
 }
 
-/* Suppression des flèches sur les inputs number */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -110,7 +109,7 @@ input[type="number"]:focus, input[type="text"]:focus, select:focus {
 }
 
 input {
-    width: 55px;
+    width: 50px;
     text-align: center;
 }
 
@@ -165,7 +164,7 @@ input[type="checkbox"].victoire:checked::after {
     font-weight: 900;
 }
 
-/* --- VII. Boutons standards & Gestion propre des images --- */
+/* --- VII. Boutons standards --- */
 button {
     display: inline-flex;
     align-items: center;
@@ -184,7 +183,6 @@ button {
     box-sizing: border-box;
 }
 
-/* Sécurisation stricte des images dans les boutons */
 button img {
     width: 18px;
     height: 18px;
@@ -203,7 +201,6 @@ button:active {
     transform: translateY(1px);
 }
 
-/* Boutons d'action principale */
 #ajouterLigne, #ajouterMatch, #ajouterPartenaire {
     background-color: var(--color-yellow);
     color: var(--color-black);
@@ -243,11 +240,10 @@ button:active {
     color: #ffffff;
 }
 
-/* --- VIII. Tableaux responsive (Pleine largeur & Bordures jaunes) --- */
+/* --- VIII. Tableaux corrigés (Anti-écrasement) --- */
 table {
     width: 100% !important;
     max-width: 100% !important;
-    table-layout: fixed !important;
     border-collapse: collapse;
     background: var(--color-yellow);
     border: 2px solid var(--color-yellow);
@@ -256,24 +252,13 @@ table {
     margin: 12px 0;
 }
 
-#tableauMatch th, #tableauMatch td {
-    width: 20%;
+th, td {
     border: 2px solid var(--color-yellow);
-    padding: 10px 2px;
+    padding: 10px 6px;
     text-align: center;
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     box-sizing: border-box;
-    word-break: break-word;
-}
-
-#tableauPoints th, #tableauPoints td {
-    width: 25%;
-    border: 2px solid var(--color-yellow);
-    padding: 10px 4px;
-    text-align: center;
-    font-size: 0.8rem;
-    box-sizing: border-box;
-    word-break: break-word;
+    word-break: normal;
 }
 
 th {
@@ -281,9 +266,8 @@ th {
     color: var(--color-yellow);
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 0.65rem;
+    font-size: 0.7rem;
     letter-spacing: 0.5px;
-    border: 2px solid var(--color-yellow);
 }
 
 td {
@@ -376,9 +360,9 @@ section.navigation .cssCentre {
 }
 
 section.navigation button.navigation {
-    flex: 1; /* Force chaque bouton à occuper une part égale de la largeur totale */
+    flex: 1;
     display: flex;
-    flex-direction: column; /* Empile l'icône et le texte proprement */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: var(--color-yellow);
@@ -391,12 +375,11 @@ section.navigation button.navigation {
     text-align: center;
     box-shadow: none;
     cursor: pointer;
-    min-height: 48px; /* Confort tactile sur smartphone */
+    min-height: 48px;
     box-sizing: border-box;
     transition: background-color 0.2s, transform 0.1s;
 }
 
-/* Rendu net et proportionné des icônes dans la barre de navigation */
 section.navigation button.navigation img {
     width: 20px;
     height: 20px;
@@ -409,30 +392,4 @@ section.navigation button.navigation img {
 
 section.navigation button.navigation:hover {
     background-color: var(--color-yellow-hover);
-}
-
-/* --- XII. Ajustements Media Queries pour tablettes / grands écrans --- */
-@media (min-width: 768px) {
-    body {
-        padding: 24px;
-        padding-bottom: 90px;
-    }
-    
-    .bloc-statistiques-layout {
-        flex-direction: row;
-        justify-content: space-around;
-    }
-
-    section.navigation .cssCentre {
-        max-width: 600px;
-        margin: 0 auto;
-    }
-
-    input[type="number"],
-    input[type="text"],
-    select,
-    textarea {
-        font-size: 16px !important;
-    }
-
 }
