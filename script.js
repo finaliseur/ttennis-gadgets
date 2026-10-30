@@ -36,7 +36,7 @@ function ajouterLigne(){
     <th><input type="number" class="champScore" placeholder="Saisir le classement de l'adversaire" value="500" min="500"></th>
     <th><input type="checkbox" class="victoire"></th>
     <th><span class="resultat">0</span></th>
-    <th><button class="suppresion" onclick="supprimerLigne(this)">- Supprimer la ligne</button></th>
+    <th><button class="suppresion" onclick="supprimerLigne(this)">✕</button></th>
     </tr>
     `;
 
@@ -378,7 +378,7 @@ function ajouterMatch(){
     <th><input type="number" min="0" max="5" value="0" placeholder="Nombre de set gagné" class="setGagne"></th>
     <th><input type="number" min="0" max="5" value="0" placeholder="Nombre de set perdu" class="setPerdu"></th>
     <th><span class="victoire"></span></th>
-    <th><button onclick="supprimerMatch(this)">Supprimer le match</button></th>
+    <th><button onclick="supprimerMatch(this)">✕</button></th>
     </tr>
     `;
 
@@ -515,7 +515,7 @@ function afficherDesafficherStatistiques(){
         // titre h2 'Tableau récapitulatif des matchs avec...'
         titreTableau.style.display = 'block';
         // Tableau
-        tableau.style.display = 'block';
+        tableau.style.display = 'table';
         // titre h2 'Statistiques sur les matchs'
         titreStatistiques.style.display = 'block';
         // Partie statistiques
