@@ -409,14 +409,12 @@ section.navigation button.navigation:hover {
     background-color: var(--color-yellow-hover);
 }
 
-/* --- XII. Correctif tableaux mobiles --- */
-
-/* Les colonnes respectent exactement la largeur du conteneur */
+/* --- XII. Tableaux mobiles --- */
 table {
     table-layout: fixed;
+    width: 100% !important;
 }
 
-/* Les champs et boutons s'adaptent à la cellule */
 table input[type="number"] {
     width: 100%;
     min-width: 0;
@@ -432,64 +430,25 @@ table button {
     line-height: 1.1;
 }
 
-/* Les cellules du corps sont des <th> : on évite les débordements de texte */
 tbody th {
     padding: 6px 2px;
     font-size: 0.75rem;
-    overflow: hidden;
-    word-break: break-word;
 }
 
-/* Tableau 1 : calculateur de points */
-#tableauPoints th:nth-child(1) { width: 34% !important; }
-#tableauPoints th:nth-child(2) { width: 16% !important; }
-#tableauPoints th:nth-child(3) { width: 16% !important; }
-#tableauPoints th:nth-child(4) { width: 34% !important; }
-
-/* Tableau 2 : matchs (5 colonnes) */
-#tableauMatch th:nth-child(1),
-#tableauMatch th:nth-child(2),
-#tableauMatch th:nth-child(3) { width: 17% !important; }
-#tableauMatch th:nth-child(4) { width: 25% !important; }
-#tableauMatch th:nth-child(5) { width: 24% !important; }
-
-/* Cases à cocher centrées dans leur cellule */
 tbody input[type="checkbox"].victoire {
     margin: 0 auto;
 }
 
-/* Sécurité : si malgré tout un tableau est trop large, il défile au lieu de déborder */
-.vueActive {
-    overflow-x: hidden;
+/* En-têtes verticaux : la rotation est sur le span, pas sur la cellule */
+thead th {
+    padding: 8px 0;
+    vertical-align: bottom;
 }
 
-/* --- XIII. En-têtes verticaux --- */
-thead th {
+thead th span {
+    display: inline-block;
     writing-mode: vertical-rl;
-    transform: rotate(180deg);   /* lecture de bas en haut */
+    transform: rotate(180deg);
     white-space: nowrap;
-    text-align: left;            /* après rotation, aligne le texte en bas de la cellule */
-    vertical-align: middle;
-    padding: 10px 4px;
-    letter-spacing: 0.5px;
-    font-size: 0.65rem;
     line-height: 1.2;
-}
-
-/* --- XIV. Hauteur des en-têtes verticaux --- */
-thead th {
-    word-break: normal;
-    overflow-wrap: normal;
-    overflow: visible;
-    box-sizing: border-box;
-}
-
-/* Tableau 1 : "Classement adversaire" est le libellé le plus long */
-#tableauPoints thead th {
-    height: 180px;
-}
-
-/* Tableau 2 : libellés plus courts */
-#tableauMatch thead th {
-    height: 120px;
 }

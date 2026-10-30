@@ -31,12 +31,18 @@
 
                 <!--Tableau-->
                 <table id="tableauPoints">
+                    <colgroup>
+                        <col style="width:34%">
+                        <col style="width:16%">
+                        <col style="width:16%">
+                        <col style="width:34%">
+                    </colgroup>
                     <thead id="thead">
                         <tr>
-                            <th scope="col">Classement adversaire</th>
-                            <th scope="col">Victoire ?</th>
-                            <th scope="col">Gain</th>
-                            <th scope="col">Supprimer</th>
+                            <th scope="col"><span>Classement adversaire</span></th>
+                            <th scope="col"><span>Victoire ?</span></th>
+                            <th scope="col"><span>Gain</span></th>
+                            <th scope="col"><span>Supprimer</span></th>
                         </tr>
                     </thead>
 
@@ -86,15 +92,22 @@
             <h2 id="titreTableau">Tableau récapitulatif des matchs avec <span id="listboxChoix"></span></h2>
 
             <table id="tableauMatch">
-                <thead id="teteMatch">
-                    <tr>
-                        <th scope="col">Nombre de set</th>
-                        <th scope="col">Set gagné</th>
-                        <th scope="col">Set perdu</th>
-                        <th scope="col">Vainqueur</th>
-                        <th scope="col">Supprimer</th>
-                    </tr>
-                </thead>
+            <colgroup>
+                <col style="width:17%">
+                <col style="width:17%">
+                <col style="width:17%">
+                <col style="width:25%">
+                <col style="width:24%">
+            </colgroup>
+            <thead id="teteMatch">
+                <tr>
+                    <th scope="col"><span>Nombre de set</span></th>
+                    <th scope="col"><span>Set gagné</span></th>
+                    <th scope="col"><span>Set perdu</span></th>
+                    <th scope="col"><span>Vainqueur</span></th>
+                    <th scope="col"><span>Supprimer</span></th>
+                </tr>
+            </thead>
 
                 <tbody id="corpsMatch">
 
