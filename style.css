@@ -475,3 +475,21 @@ thead th {
     font-size: 0.65rem;
     line-height: 1.2;
 }
+
+/* --- XIV. Hauteur des en-têtes verticaux --- */
+thead th {
+    word-break: normal;
+    overflow-wrap: normal;
+    overflow: visible;
+    box-sizing: border-box;
+}
+
+/* Tableau 1 : "Classement adversaire" est le libellé le plus long */
+#tableauPoints thead th {
+    height: 180px;
+}
+
+/* Tableau 2 : libellés plus courts */
+#tableauMatch thead th {
+    height: 120px;
+}
