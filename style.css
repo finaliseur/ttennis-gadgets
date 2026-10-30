@@ -111,6 +111,7 @@ input[type="number"]:focus, input[type="text"]:focus, select:focus {
 input {
     width: 50px;
     text-align: center;
+    max-width: 100%;
 }
 
 .entreeJoueur {
@@ -240,31 +241,27 @@ button:active {
     color: #ffffff;
 }
 
-/* --- VIII. Tableaux sécurisés (Anti-débordement avec scroll fluide) --- */
-.table-responsive {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    margin: 12px 0;
-    border-radius: 8px;
-    border: 2px solid var(--color-yellow);
-}
-
+/* --- VIII. Tableaux ajustés (Anti-débordement strict) --- */
 table {
-    width: 100%;
-    min-width: 320px; /* Empêche l'asphyxie des colonnes */
+    width: 100% !important;
+    max-width: 100% !important;
     border-collapse: collapse;
     background: var(--color-yellow);
-    margin: 0;
+    border: 2px solid var(--color-yellow);
+    border-radius: 8px;
+    overflow: hidden;
+    margin: 12px 0;
+    box-sizing: border-box;
 }
 
 th, td {
     border: 2px solid var(--color-yellow);
-    padding: 10px 6px;
+    padding: 8px 4px;
     text-align: center;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     box-sizing: border-box;
-    white-space: nowrap; /* Empêche les textes de couper bizarrement */
+    word-break: break-word;
+    overflow-wrap: break-word;
 }
 
 th {
@@ -272,7 +269,7 @@ th {
     color: var(--color-yellow);
     font-weight: 700;
     text-transform: uppercase;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     letter-spacing: 0.5px;
 }
 
@@ -286,7 +283,7 @@ tr:hover td {
     background-color: #e6b800;
 }
 
-/* --- IX. Section Statistiques & Graphique (Corrigée : affichage complet) --- */
+/* --- IX. Section Statistiques & Graphique (Hauteur libérée) --- */
 .bloc-statistiques-layout {
     display: flex;
     flex-direction: column;
@@ -297,12 +294,14 @@ tr:hover td {
     padding: 14px;
     border-radius: var(--radius);
     margin-top: 16px;
-    height: auto !important; /* Force le conteneur à s'adapter à toutes les lignes */
+    height: auto !important;
+    max-height: none !important;
 }
 
 .partie-stats {
     width: 100%;
     height: auto !important;
+    max-height: none !important;
 }
 
 .partie-stats ul {
