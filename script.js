@@ -36,7 +36,7 @@ function ajouterLigne(){
     <th><input type="number" class="champScore" placeholder="Saisir le classement de l'adversaire" value="500" min="500"></th>
     <th><input type="checkbox" class="victoire"></th>
     <th><span class="resultat">0</span></th>
-    <th><button class="suppresion" onclick="supprimerLigne(this)">✕</button></th>
+    <th><button class="suppresion" onclick="supprimerLigne(this)"><img src="Image/Moins.png" alt="Supprimer cette ligne"></button></th>
     </tr>
     `;
 
@@ -378,7 +378,7 @@ function ajouterMatch(){
     <th><input type="number" min="0" max="5" value="0" placeholder="Nombre de set gagné" class="setGagne"></th>
     <th><input type="number" min="0" max="5" value="0" placeholder="Nombre de set perdu" class="setPerdu"></th>
     <th><span class="victoire"></span></th>
-    <th><button onclick="supprimerMatch(this)">✕</button></th>
+    <th><button onclick="supprimerMatch(this)"><img src="Image/Moins.png" alt="Supprimer ce match avec ce partenaire"></button></th>
     </tr>
     `;
 
