@@ -98,6 +98,7 @@ input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
 input[type="number"] {
     -moz-appearance: textfield;
 }
@@ -114,9 +115,13 @@ input {
     max-width: 100%;
 }
 
-.entreeJoueur {
+.entreeJoueur, #evenementNom, #supprimerEvenement {
     width: 100%;
     max-width: 100%;
+}
+
+#evenementNom {
+    text-align: start;
 }
 
 .cssCentre {
@@ -224,19 +229,6 @@ button:active {
 }
 
 #supprimerPartenaire:hover {
-    background-color: var(--color-danger);
-    color: #ffffff;
-}
-
-.suppresion {
-    background-color: #df0303;
-    color: #000000;
-    border: 1px solid #000000;
-    padding: 6px 10px;
-    font-size: 0.8rem;
-}
-
-.suppresion:hover {
     background-color: var(--color-danger);
     color: #ffffff;
 }
@@ -451,4 +443,94 @@ thead th span {
     transform: rotate(180deg);
     white-space: nowrap;
     line-height: 1.2;
+}
+
+/* --- XIII. Champs de type time --- */
+input[type="time"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    min-height: 42px;              /* évite que le champ s'écrase quand il est vide sur iOS */
+    padding: 8px;
+    border: 2px solid #ffffff;
+    border-radius: 8px;
+    font-size: 16px !important;    /* anti-zoom iOS */
+    font-weight: bold;
+    background-color: #000000;
+    color: var(--color-yellow);
+    text-align: start;
+    box-sizing: border-box;
+    color-scheme: dark;            /* sélecteur d'heure natif en thème sombre */
+    transition: all 0.2s ease;
+}
+
+input[type="time"]:focus {
+    outline: none;
+    border-color: var(--color-yellow);
+    box-shadow: 0 0 0 3px rgba(255, 204, 0, 0.4);
+}
+
+/* Valeur affichée (Safari / Chrome) */
+input[type="time"]::-webkit-date-and-time-value {
+    text-align: start;
+    width: 100%;
+    color: var(--color-yellow);
+}
+
+input[type="time"]::-webkit-datetime-edit,
+input[type="time"]::-webkit-datetime-edit-fields-wrapper,
+input[type="time"]::-webkit-datetime-edit-hour-field,
+input[type="time"]::-webkit-datetime-edit-minute-field,
+input[type="time"]::-webkit-datetime-edit-text {
+    color: var(--color-yellow);
+    padding: 0 1px;
+}
+
+/* Icône d'horloge (navigateurs de bureau) en jaune */
+input[type="time"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+    filter: invert(78%) sepia(80%) saturate(1500%) hue-rotate(2deg) brightness(105%);
+}
+
+/* Dans un tableau : s'adapte à la cellule */
+table input[type="time"] {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding: 6px 2px;
+}
+
+/* --- XIV. Conteneur d'événements (style bloc statistiques) --- */
+.cssConteneur {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    background: #141414;
+    border: 1px solid var(--color-yellow);
+    padding: 14px;
+    border-radius: var(--radius);
+    margin-top: 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.cssConteneur ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--color-yellow);
+}
+
+.cssConteneur li {
+    padding: 10px 4px;
+    border-bottom: 1px dashed #333333;
+}
+
+.cssConteneur li:last-child {
+    border-bottom: none;
 }

@@ -9,8 +9,8 @@
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <link href="style.css" rel="stylesheet">
     </head>
-
-    <body onload="bilanDerive(); listboxRecupererJoueur(); afficherDesafficherStatistiques(); charger()">
+        <body>
+    <!--<body onload="listboxRecupererJoueur(); afficherDesafficherStatistiques(); charger(); optionListbox()">-->
 
 
 
@@ -52,7 +52,7 @@
                 </table>
 
                 <br><br>
-                <button id="ajouterLigne" onclick="ajouterLigne()" class="cssCentre"><img src="Image/Plus.png" alt="Ajouter une ligne au tableau"></button>
+                <button id="ajouterLigne" onclick="_ajouterLigne()" class="cssCentre"><img src="Image/Plus.png" alt="Ajouter une ligne au tableau"></button>
             </main>
             <footer>
                 <!--
@@ -84,8 +84,8 @@
             <input class="entreeJoueur" type="text" id="listboxModifier" placeholder="Saisir le nom" value="">
 
             <br><br>
-            <button onclick="listboxJoueurAjouter()" id="ajouterPartenaire"><img src="Image/Plus_partenaire.png" alt="Ajouter un partenaire"></button>
-            <button onclick="listboxJoueurSupprimer()" id="supprimerPartenaire"><img src="Image/Moins_partenaire.png" alt="Supprimer un partenaire"></button>
+            <button onclick="_ajouterPartenaire()" id="ajouterPartenaire"><img src="Image/Plus_partenaire.png" alt="Ajouter un partenaire"></button>
+            <button onclick="_supprimerPartenaire()" id="supprimerPartenaire"><img src="Image/Moins_partenaire.png" alt="Supprimer un partenaire"></button>
 
             <!--Tableau récapitulatif des matchs-->
             <br><br>
@@ -115,7 +115,7 @@
             </table>
 
             <br><br>
-            <button id="ajouterMatch" title="Ne fonctionne pas si aucun joueur choisit" onclick="ajouterMatch()"><img src="Image/Plus.png" alt="Ajouter un match"></button>
+            <button id="ajouterMatch" title="Ne fonctionne pas si aucun joueur choisit" onclick="_ajouterMatch()"><img src="Image/Plus.png" alt="Ajouter un match"></button>
 
             <!--Statistiques sur les match avec cette personne-->
             <div class="bloc-statistiques-layout">
@@ -137,12 +137,53 @@
         </section>
 
 
-        <section id="vueAccueil" class="vue">
-            <h1>Accueil</h1>
+        <section id="vueCalendrier" class="vue">
+            <h1>Calendrier</h1>
+            <h2>Ajouter un événement</h2>
 
+
+            <!--Ajout d'un nouvel événement-->
+            <label for="dateJour">Numéro du jour : </label>
+            <select id="dateJour">
+            </select>
+            <br>
+
+            <label for="dateMois">Mois : </label>
+            <select id="dateMois">
+            </select>
+            <br>
+
+            <label for="dateAnnee">Année : </label>
+            <select id="dateAnnee">
+            </select>
+            <br>
+
+            <label for="heureDebut">Heure du début : </label>
+            <input id="heureDebut" type="time">
+            <br>
+
+            <label for="heureFin">Heure de fin : </label>
+            <input id="heureFin" type="time">
+            <br>
+
+            <label for="evenementNom">Nom de l'événement : </label>
+            <input type="text" id="evenementNom">
+            <br>
+
+            <button title="Ne fonctionne pas si donnée manquante" onclick="_ajouterEvenement()" id="ajouterEvenement"><img src="Image/Plus_Evenement.png" alt="Ajouter un évènement"></button>
+            <br><br>
+
+            <label for="supprimerEvenement">ID de l'évènement à supprimer : </label>
+            <input type="text" id="supprimerEvenement" placeholder="ID de l'évènement à supprimer">
+            <br>
+
+            <button title="Ne fonctionne pas si l'ID n'existe pas" id="boutonSupprimerEvenement" onclick="_supprimerEvenement()"><img src="Image/Moins_Evenement.png"></button>
+
+            <div class="cssConteneur">
+                <ul id="listeEvenement">Pas d'événement programmé actuellement..</ul>
+            </div>
+            
         </section>
-
-
 
 
 
@@ -161,14 +202,19 @@
             <div class="cssCentre">
                 <button data-cible="vueCalculPoints" class="navigation" id="calculateurPoints"><img src="Image/Calculette.png" alt="Calculateur de points"></button>
                 <button data-cible="vueStatistiques" class="navigation" id="statistiques"><img src="Image/Graphique.png" alt="Statistiques"></button>
+                <button data-cible="vueCalendrier" class="navigation" id="calendrier"><img src="Image/Calendrier.png" alt="Calendrier"></button>
                 <!--
                 <button data-cible="vueAccueil" class="navigation" id="accueil">Accueil</button>
-                <button data-cible="vueCalendrier" class="navigation" id="calendrier">Calendrier</button>
                 <button data-cible="vueParametres" class="navigation" id="parametres">Paramètres</button>
                 -->
             </div>
         </section>
 
-        <script src="script.js"></script>
+        <script src="script/navigation.js"></script>
+        <script src="script/stockage.js"></script>
+        <script src="script/points.js"></script>
+        <script src="script/stats.js"></script>
+        <script src="script/calendrier.js"></script>
+        <script src="script/sauvegarde.js"></script>
     </body>
 </html>
