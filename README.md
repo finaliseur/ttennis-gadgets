@@ -26,8 +26,8 @@ Choississez un partenaire d'entraînement ou un rivale.
 Rentrer vos matchs (en 3, 5 ou peut importe le nombre de sets).
 
 Des statistiques rien que pour vous.  
-- Moyenne du nombre de set gagné (ramené sur 3)
-- Moyenne du nombre de set perdu (ramené sur 3)
+- Moyenne du nombre de set gagné (entre 0 et 1)
+- Moyenne du nombre de set perdu (entre 0 et 1)
 - Fréquence de victoire
 - Fréquence de défaite
 - Un graphique montrant le rapport victoire / défaite.
