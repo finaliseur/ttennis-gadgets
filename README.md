@@ -3,7 +3,7 @@
 L'outil pour tous les pongistes !
 Disponible sur toutes les plateformes.
 
-#**version : v1.0.0.**
+#**--- version : v1.0.0. ---**
 
 TTENNIS GADGETS est votre ami à vous tous amis pongistes.
 
@@ -32,7 +32,7 @@ Des statistiques rien que pour vous.
 - Fréquence de défaite
 - Un graphique montrant le rapport victoire / défaite.
 
-#**version : 1.1.0 (actuelle)**
+#**--- version : 1.1.0 (actuelle) ---**
 
 Modification :
 *Nettoyage complet et optimisation du code Javascript  
